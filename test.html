@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Timeout Dialog</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/timeout-dialog.js"></script>
+<script type="text/javascript" src="js/idle.min.js"></script>
+<link rel="stylesheet" href="css/index.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/timeout-dialog.css" type="text/css" media="screen, projection" />
+</head>
+<body>
+<div class="container">
+<p>Keep click for 1 second, and leave it idle, within 60s, you should see a timeout dialog.</p>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+// $(function () {
+
+// });
+
+var sessionTimeout = function(){
+    $.timeoutDialog({
+        timeout: 60,
+        countdown: 60,
+        logout_redirect_url: 'https://github.com/rigoneri/timeout-dialog.js',
+        restart_on_yes: true
+    });
+}
+
+var idle = new Idle({
+                onAway: sessionTimeout,
+                awayTimeout: 5000 //away with 5 seconds of inactivity
+            }).start();
+
+/*]]>*/
+</script>
+</body>
+</html>
