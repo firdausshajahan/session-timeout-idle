@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>Timeout Dialog</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/timeout-dialog.js"></script>
 <script type="text/javascript" src="js/idle.min.js"></script>
 <link rel="stylesheet" href="css/index.css" type="text/css" media="screen, projection" />
@@ -16,14 +16,16 @@
 
 <script type="text/javascript">
 /*<![CDATA[*/
-// $(function () {
-
-// });
 
 var sessionTimeout = function(){
     $.timeoutDialog({
         timeout: 60,
-        countdown: 60,
+        countdown: 100,
+        title : 'Sesi Penggunaan anda bakal ditamatkan!',
+        message : 'Anda akan di log keluar dalam {0} saat.',
+        question: 'Adakah anda mahu terus gunakan?',
+        keep_alive_button_text: 'Ya',
+        sign_out_button_text: 'Log Keluar',
         logout_redirect_url: 'https://github.com/rigoneri/timeout-dialog.js',
         restart_on_yes: true
     });
@@ -36,5 +38,10 @@ var idle = new Idle({
 
 /*]]>*/
 </script>
+<style>
+    .ui-dialog-buttonset {
+	    text-align: center !important;
+    }
+</style>
 </body>
 </html>
